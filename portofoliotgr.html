@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Portfolio | [Your Name]</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    :root {
+      --primary: #f2003c;
+      --secondary: #0070ff;
+      --dark: #0a0a1a;
+      --light: #f5f5ff;
+      --accent: #d100ff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    
+    /* Particles Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, #0a0a2a 0%, #0a0a1a 100%);
+    }
+    
+    /* Header */
+    header {
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(10, 10, 26, 0.9);
+      box-shadow: 0 5px 20px rgba(0, 247, 255, 0.1);
+      padding: 1rem 5%;
+    }
+    
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 10;
+      padding-top: 5rem;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1rem;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 247, 255, 0.3);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* About Section */
+    section {
+      padding: 6rem 5%;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      font-size: 2.5rem;
+    }
+    
+    .section-title span {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .about-container {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+    
+    .about-img img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+      transition: all 0.5s ease;
+    }
+    
+    .about-img::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      top: 20px;
+      left: 20px;
+      z-index: -1;
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 3rem auto;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 10px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+      text-align: right;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -12px;
+    }
+    
+    .right::after {
+      left: -12px;
+    }
+    
+    .timeline-content {
+      padding: 20px 30px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 247, 255, 0.3);
+    }
+    
+    .timeline-content h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    /* Portfolio Section */
+    .portfolio-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 247, 255, 0.3);
+    }
+    
+    .portfolio-img {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .portfolio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .portfolio-item:hover .portfolio-img img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 10, 26, 0.9), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      transition: all 0.5s ease;
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      bottom: 0;
+    }
+    
+    .portfolio-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .portfolio-overlay p {
+      margin-bottom: 1rem;
+    }
+    
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .portfolio-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--light);
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .skill-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 247, 255, 0.3);
+    }
+    
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skill-info h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 5px;
+      transition: width 1.5s ease;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      color: var(--light);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* Love Letter Section */
+    .letter-section {
+      padding: 6rem 5%;
+      text-align: center;
+    }
+    
+    .letter-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    #letter-content {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--primary);
+      text-align: left;
+    }
+    
+    #letter-content p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, #0a0a1a, #0a0a2a);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--light);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-5px);
+    }
+    
+    .footer-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-container {
+        flex-direction: column;
+      }
+      
+      .timeline::before {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 18px;
+      }
+      
+      .left, .right {
+        left: 0;
+        text-align: left;
+      }
+      
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(10, 10, 26, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: all 0.5s ease;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .hamburger {
+        display: block;
+        color: var(--light);
+        font-size: 1.5rem;
+      }
+      
+      .portfolio-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">[Tegar Ganteng]</a>
+    <nav>
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#contact">Kontak</a></li>
+        <li><a href="#love-letter">Surat Cinta</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Halo, Saya <span>[Tegar Yudha Murti]</span></h1>
+      <p>Yaaa perkenalkan saya tegar saya hanya gabut buat kayak gini.</p>
+      <a href="#portfolio" class="cta-button">Lihat Kalo Gamau Ydh</a>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">Tentang <span>Saya</span></h2>
+    
+    <div class="about-container">
+      <div class="about-img">
+        <img src="IMG-20240916-WA0091.jpeg" alt="fotone raono soale eror" />
+      </div>
+      <div class="about-content">
+        <h3>[Mabar ML Callme]</h3>
+        <p>Aku raja kau kontl😍.</p>
+        
+        <div class="skills-container">
+          <div class="skill-item">
+            <div class="skill-info">
+              <h3>Innovation</h3>
+              <span>95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 95%"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <h3>Creativity</h3>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>Tanggal Lahir dan Tempat tinggal</h3>
+          <p>saya lahir pada 21 3 2010</p>
+          <p>Saya tinggal di rumah.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>Tegar ganteng</h3>
+          <p>Eee gatau deh mau di isi apa</p>
+          <p>Yang baca mabar.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3>suka dan hobi</h3>
+          <p>saya suka aufha</p>
+          <p>hobi saya tidur</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3>Wes bingung di isi opo</h3>
+          <p>Mboh</p>
+          <p>Karep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2 class="section-title">Proyek e gogel <span>foto dari gogel</span></h2>
+    
+    <div class="portfolio-container">
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8e2d5927-37e0-40c2-bcd8-182cb1712c4d.png" alt="Modern dashboard interface with interactive data visualizations and analytics" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Quantum Dashboard</h3>
+          <p>An AI-powered analytics platform with real-time data visualization and predictive capabilities.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/127044cc-ceff-4a8d-bea9-42affb1cce1f.png" alt="VR shopping application showing 3D product visualization in a virtual store" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Virtual Shop VR</h3>
+          <p>Immersive virtual shopping experience with 3D product visualization and AI recommendations.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bcb51187-206d-4273-a5cd-b7b097f1be35.png" alt="Mobile fitness app interface with workout tracking and augmented reality features" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>AR Fitness Coach</h3>
+          <p>Mobile fitness application with AR workout guidance and real-time biometric feedback.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5bc70338-4a0f-47b7-b405-0af882e5201e.png" alt="Smart home control panel with connected devices and automation settings" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Nexus Smart Home</h3>
+          <p>Unified IoT platform for controlling and automating smart home devices with voice and gesture control.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3fc8cbc3-7416-47ea-89e3-f07b1600d729.png" alt="E-learning platform with interactive courses and virtual classroom features" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>NeuroLearn</h3>
+          <p>Adaptive learning platform using cognitive science to personalize educational content.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1af49019-adbd-4a3e-8534-b687c2fd2dd4.png" alt="Music visualization app showing audio frequencies and reactive graphics" />
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Audio Vision FX</h3>
+          <p>Generative music visualization tool that creates dynamic graphics synchronized to audio input.</p>
+          <div class="portfolio-links">
+            <a href="#"><i class="fas fa-link"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title">Keahlian <span>Ngarang</span></h2>
+    
+    <div class="skills-container">
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>Frontend Development</h3>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 95%"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>UI/UX Design</h3>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 90%"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>React/Next.js</h3>
+          <span>92%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 92%"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>Node.js</h3>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 85%"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>Three.js/WebGL</h3>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 80%"></div>
+        </div>
+      </div>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <h3>AI Integration</h3>
+          <span>75%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-progress" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Hubungi <span>Aku Y</span></h2>
+    
+    <div class="contact-container">
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" class="form-control" required>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="message">Message</label>
+          <textarea id="message" class="form-control" required></textarea>
+        </div>
+        
+        <div class="form-group full-width">
+          <button type="submit" class="cta-button">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Love Letter Section -->
+  <section id="love-letter" class="letter-section">
+    <div class="letter-container">
+      <button id="letter-btn" class="cta-button">Buka Ojo Salting🤭</button>
+      <div id="letter-content" class="letter-content">
+        <h2>Untuk Yang Baca,</h2>
+        <p>Di setiap detik yang berlalu, hatiku hanya memikirkanmu...</p>
+        <p>Kau adalah cahaya yang menerangi hariku, membuat setiap rasa sakit menjadi berarti, setiap tawa menjadi lebih indah.</p>
+        <p>Aku mungkin tidak pandai merangkai kata, tapi izinkan aku mencintaimu dengan caraku yang sederhana ini.</p>
+        <p>Dengan sepenuh hati,<br>Dirimu,"OJO SALTING"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/tegaryudaam"><i class="fab fa-github"></i></a>
+      <a href="https://tiktok.com/@tegaryudm"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/garyudaa"><i class="fab fa-instagram"></i></a>
+    </div>
+    
+    <p class="footer-text">© 2025 [Di Buat Oleh Tegar Ganteng]. Hak cipta dilindungi.</p>
+  </footer>
+  
+  <script>
+    // Particles.js initialization
+    document.addEventListener('DOMContentLoaded', function() {
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: "#f2003c"
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000"
+            },
+            polygon: {
+              nb_sides: 5
+            }
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: false,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#0070ff",
+            opacity: 0.4,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 5,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab"
+            },
+            onclick: {
+              enable: true,
+              mode: "push"
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 1
+              }
+            },
+            bubble: {
+              distance: 400,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4
+            },
+            push: {
+              particles_nb: 4
+            },
+            remove: {
+              particles_nb: 2
+            }
+          }
+        },
+        retina_detect: true
+      });
+      
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Mobile menu toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      
+      hamburger.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        hamburger.innerHTML = navLinks.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('active');
+          hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // Form submission
+      const contactForm = document.querySelector('.contact-form');
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // In a real application, you would send this data to a server
+        console.log('Form submitted:', { name, email, subject, message });
+        
+        // Show success message
+        alert('Pesan terkirim! Saya akan segera menghubungi Anda kembali.');
+        
+        // Reset form
+        contactForm.reset();
+      });
+      
+      // Animate skills on scroll
+      const skillItems = document.querySelectorAll('.skill-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const progressBar = entry.target.querySelector('.skill-progress');
+            const width = progressBar.style.width;
+            progressBar.style.width = '0';
+            
+            setTimeout(() => {
+              progressBar.style.width = width;
+            }, 100);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      skillItems.forEach(item => {
+        observer.observe(item);
+      });
+      
+      // Fade in elements on scroll
+      const fadeElements = document.querySelectorAll('.hero-content, .about-container, .portfolio-item, .skill-item, .contact-container');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        fadeObserver.observe(el);
+      });
+
+      // Love letter button
+      const letterBtn = document.getElementById('letter-btn');
+      const letterContent = document.getElementById('letter-content');
+      
+      letterBtn.addEventListener('click', function() {
+        letterContent.style.display = letterContent.style.display === 'block' ? 'none' : 'block';
+        letterBtn.textContent = letterContent.style.display === 'block' ? 'Tutup' : 'Buka Ojo Salting🤭';
+      });
+    });
+  </script>
+</body>
+</html>
+
